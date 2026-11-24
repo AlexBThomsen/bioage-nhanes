@@ -3,7 +3,7 @@
 Biological age from routine blood tests + blood pressure, trained on NHANES 1999–2018 linked to death records (follow-up to 31 Dec 2019), validated on NHANES III (1988–94), plus a Mendelian randomization test of pulse pressure.
 
 - **Full report (figures, tables, methods):** https://claude.ai/artifact/PHauwqir4xdtW8CWU59xHe
-- **Paper draft:** [`paper/preprint.md`](paper/preprint.md) (not peer reviewed)
+- **Preprint:** [`paper/preprint.md`](paper/preprint.md) · [PDF](paper/preprint.pdf) (not peer reviewed)
 - **Pre-registration and deviations:** [`PREREGISTRATION.md`](PREREGISTRATION.md)
 - **Result files:** `reports/` (JSON, logs, figures)
 
@@ -85,3 +85,7 @@ reports/          results CSV/JSON, figures, RESULTS.md
 - **PhenoAge predicts aging-related death, not all-cause death.** Its predicted 10-yr risk matches observed deaths excluding accidents, flu/pneumonia and "other" causes, so it under-predicts all-cause risk by design. Constants are taken verbatim from the BioAge R package; an early version mistyped the denominator (0.09165 vs 0.090165), and a test now pins it.
 - **Assay drift:** creatinine is recalibrated for 1999-2000 and 2005-06 (CDC equations) and NHANES III. RDW rises ~0.9 points from 2013 (analyzer change), which adds ~3 PhenoAge years to 2015-18 participants. See `scripts/assay_drift.py`.
 - **Test horizon:** 2009–10 participants have 9–11 years of follow-up, so test metrics use 5- and 9-year horizons (not 10).
+
+## License
+
+MIT; see [LICENSE](LICENSE).

@@ -1,9 +1,9 @@
 # Multi-marker biological-age models lose calibration across laboratories, and a simple outcome-free correction restores it: a pre-registered NHANES study of blood markers, blood pressure and a Mendelian randomization test of pulse pressure
 
-**Alexander Thomsen**
+**Alexander Thomsen**  
 Independent researcher
 
-*Draft preprint, 24 November 2026. Not peer reviewed.*
+*Preprint, 24 November 2026. Not peer reviewed.*
 
 ---
 
@@ -149,9 +149,17 @@ LD clumping was implemented directly on the PLINK binary files.
 
 On the 2009–10 test set, XGBoost on feature set C reached a C-index of 0.873 (0.863–0.885). This was higher than published PhenoAge (0.858; Δ 0.015, 0.010–0.020), Cox regression on the same inputs (0.865; Δ 0.008) and age alone (0.838). DeepSurv performed the same as XGBoost (0.872). XGBoost also beat PhenoAge in the 2015–18 cohort (0.879 vs 0.860). Adding BP to the blood markers changed the C-index by 0.0017. Blood markers alone beat BP alone by 0.021.
 
+![Figure 1](../reports/figures/model_comparison.png)
+
+*Figure 1. C-index with 95% confidence intervals for all models and feature sets on the 2009–10 test set.*
+
 ### 3.2 Full laboratory panel (H8, H9 supported)
 
 Among 48,681 participants (5,370 deaths within 10 years), the 39-marker panel beat the nine markers in every held-out era. Gains ranged from 0.004 (1999–2002) to 0.008 (2015–18), with a pooled gain of 0.0060 (0.0044–0.0076). XGBoost on the nine markers beat PhenoAge in all four eras where CRP was measured (pooled 0.0074, 0.0053–0.0094). Adding BP and lifestyle factors gave a further 0.0070. The most informative new markers were ALT, GGT, chloride, urea nitrogen, platelets and potassium.
+
+![Figure 2](../reports/figures/full_panel.png)
+
+*Figure 2. Left: paired C-index gain of the 39-marker over the 9-marker model in each held-out era; the dotted line marks the pre-registered 0.005 threshold. Right: mean absolute SHAP values; red bars are markers outside PhenoAge's nine.*
 
 ### 3.3 External validation in NHANES III (H11, H12 supported; calibration failed)
 
@@ -180,6 +188,10 @@ In a post-hoc analysis (not pre-registered):
 - Dropping bicarbonate alone reduced it to 16.6%.
 - Dropping all eight shifted markers restored calibration (14.1%) with no loss of discrimination (C 0.8675).
 
+![Figure 3](../reports/figures/nhanes3_external.png)
+
+*Figure 3. Left: discrimination in NHANES III of models trained on 1999–2018. Right: calibration by decile; the dashed line is perfect calibration.*
+
 ### 3.4 Recalibration without outcomes (H13, H14 supported)
 
 **Table 3. 35-marker model in NHANES III after translating markers onto the training scale (observed 14.7%).**
@@ -194,6 +206,10 @@ In a post-hoc analysis (not pre-registered):
 | *9-marker model, no correction* | 0.864 | 14.1% | 0.010 |
 
 The primary correction brought predicted mortality to within 4% of observed and cut the decile calibration error by two-thirds, to the level of the 9-marker model. Discrimination was unchanged (ΔC +0.0008, −0.0005 to 0.0020), and the 35-marker model kept its advantage over 9 markers (+0.0043, 0.0023–0.0062). Mapping the nine PhenoAge markers as well slightly over-corrected, consistent with those markers already being comparable across surveys.
+
+![Figure 4](../reports/figures/recalibration.png)
+
+*Figure 4. Left: calibration of the 35-marker model in NHANES III before and after translating markers onto the training scale. Right: mean predicted 10-year mortality under each correction; the line marks observed mortality and the shaded band the pre-registered ±10% target.*
 
 ### 3.5 BP, biological age and stroke
 
@@ -216,6 +232,10 @@ The primary correction brought predicted mortality to within 4% of observed and 
 | *Observational, for comparison* | — | *+0.57 (0.48, 0.66)* | | | |
 
 The instruments were strong (mean F = 77). The MR-Egger intercept gave no evidence of directional pleiotropy (p = 0.66). Distance-based clumping (1, 5 and 10 Mb windows) gave the same conclusion. The IVW interval excludes the observational estimate.
+
+![Figure 5](../reports/figures/mr_scatter.png)
+
+*Figure 5. Variant-level effects on exposure (x) and outcome (y), oriented so the exposure effect is positive, with IVW, MR-Egger and weighted-median slopes.*
 
 ## 4. Discussion
 
@@ -268,6 +288,10 @@ The observational association between pulse pressure and PhenoAge acceleration w
 - Broader laboratory panels help modestly. They lose calibration across laboratories, but a simple outcome-free translation of each marker onto the training scale restores it.
 - Pulse pressure tracks biological aging but probably does not cause it.
 
+## Ethics statement
+
+This study is a secondary analysis of publicly available, de-identified data. NHANES protocols were approved by the NCHS Research Ethics Review Board, and all participants gave written informed consent. The GWAS summary statistics contain no individual-level data. No further ethical approval was required.
+
 ## Data and code availability
 
 All data are public:
@@ -276,7 +300,7 @@ All data are public:
 - figshare 12620291
 - the 1000 Genomes Phase 3 reference panel
 
-The full pipeline, pre-registration and tests are available at https://github.com/AlexBThomsen/bioage-nhanes.
+The full pipeline, pre-registration and tests are available at https://github.com/AlexBThomsen/bioage-nhanes under the MIT licence. An extended report with all figures and tables is available at https://claude.ai/artifact/PHauwqir4xdtW8CWU59xHe.
 
 ## Use of AI tools
 
@@ -300,5 +324,5 @@ None.
 6. Evangelou E, et al. Genetic analysis of over 1 million people identifies 535 new loci associated with blood pressure traits. *Nat Genet* 2018;50:1412–1425.
 7. Kuo CL, et al. Genetic associations for two biological age measures point to distinct aging phenotypes. *Aging Cell* 2021.
 8. Bowden J, Davey Smith G, Burgess S. Mendelian randomization with invalid instruments: effect estimation and bias detection through Egger regression. *Int J Epidemiol* 2015;44:512–525.
-9. Phenotypic age acceleration and hypertension: a Mendelian randomization study. *J Nutr Health Aging* 2024. *[full citation to be completed]*
-10. Bidirectional causal relations between blood pressure and arterial stiffness. PMC7544538. *[full citation to be completed]*
+9. Feng Y, Lin H, Tan H, Liu X. Heterogeneity of aging and mortality risk among individuals with hypertension: insights from phenotypic age and phenotypic age acceleration. *J Nutr Health Aging* 2024;28:100203. doi:10.1016/j.jnha.2024.100203
+10. Cecelja M, Keehn L, Ye L, Spector TD, Hughes AD, Chowienczyk P. Genetic aetiology of blood pressure relates to aortic stiffness with bi-directional causality: evidence from heritability, blood pressure polymorphisms, and Mendelian randomization. *Eur Heart J* 2020;41:3314–3322.
