@@ -116,3 +116,39 @@ Written 24 Nov 2026, before the analysis was run. Same self-registration caveat 
 **Deviations.** None from the pre-registered analysis.
 
 **Post-hoc analysis** (exploratory; `reports/nhanes3_external_posthoc.txt`). Dropping the most-shifted markers shows that ALT (median 14 vs 20 U/L) and bicarbonate account for most of the over-prediction. Dropping all eight shifted markers restores calibration (14.1%) while keeping C = 0.8675.
+
+---
+
+# Pre-registration: recalibrating a new laboratory without outcomes (NHANES III)
+
+Written 24 Nov 2026, before the analysis was run.
+
+**Question.** The 35-marker model over-predicted NHANES III mortality (17.9% vs 14.7%) because several assays read differently there. Can a lab fix this using **only its own marker values, without any outcome data**, by translating each marker onto the training data's scale?
+
+**Method (primary).** For each of the 26 extra markers, quantile-map NHANES III values onto the 1999–2018 training distribution, within strata of sex × age band (20–39, 40–59, 60–85). A person at the 30th percentile of ALT among NHANES III women aged 40–59 receives the 30th percentile of ALT among training-data women aged 40–59. Stratifying by age and sex stops differences in age structure from being "corrected away". The nine PhenoAge markers are left unchanged. No death data from NHANES III are used in the mapping. The model is the same 35-marker model (M3x) as in H11, not retrained.
+
+**Secondary methods.**
+- (a) Unstratified quantile mapping.
+- (b) Median-ratio scaling: multiply each marker by (training median ÷ NHANES III median). This is the simplest correction a lab could apply from reference-range information alone.
+- (c) Primary method applied to all 35 markers, including the nine PhenoAge markers.
+
+**Hypotheses.**
+- **H13:** After primary mapping, M3x's mean predicted 10-year risk is within ±10% (relative) of the Kaplan–Meier observed risk (13.2%–16.2%), and its C-index is no more than 0.002 below unmapped M3x.
+- **H14:** Mapped M3x still beats M2 in C-index, with the paired bootstrap 95% CI excluding 0 (1,000 resamples).
+
+**Also reported.** Calibration by decile, and the integrated calibration index (mean absolute predicted − observed across deciles).
+
+**Known caveat.** Quantile mapping removes all differences in marker distribution between populations, including real biological ones. For example, ALT may truly have been lower in 1988–94, when obesity and fatty liver were less common. If calibration improves, that shows the correction works for risk prediction. It does not show that the whole shift was a laboratory artefact.
+
+## Outcome (added after running, 24 Nov 2026)
+
+Results are in `reports/recalibration.json`. Observed 10-year mortality was 14.7%.
+
+- **H13 supported.** After primary mapping, mean predicted mortality was 14.2% (unmapped: 17.9%). The C-index was 0.8680, against 0.8672 unmapped (ΔC +0.0008, 95% CI −0.0005 to +0.0020). Decile ICI fell from 0.034 to 0.012.
+- **H14 supported.** Mapped M3x − M2 = +0.0043 (+0.0023 to +0.0062).
+- **Secondary methods:**
+  - Unstratified mapping: 14.4%.
+  - Median-ratio scaling: 15.0%.
+  - Mapping all 35 markers: 13.4% (slight over-correction).
+
+**Deviations.** None.

@@ -2,11 +2,12 @@
 
 Biological age from routine blood tests + blood pressure, trained on NHANES 1999–2018 linked to death records (follow-up to 31 Dec 2019), validated on NHANES III (1988–94), plus a Mendelian randomization test of pulse pressure.
 
+- **Full report (figures, tables, methods):** https://claude.ai/artifact/PHauwqir4xdtW8CWU59xHe
 - **Paper draft:** [`paper/preprint.md`](paper/preprint.md) (not peer reviewed)
 - **Pre-registration and deviations:** [`PREREGISTRATION.md`](PREREGISTRATION.md)
 - **Result files:** `reports/` (JSON, logs, figures)
 
-Headline findings: gradient-boosted Cox on routine blood markers beats PhenoAge (C 0.873 vs 0.858); BP adds little to mortality prediction; a 39-marker panel adds a small gain that transfers across laboratories in ranking but not in calibration (ALT, bicarbonate assay shifts); pulse pressure is not causally linked to PhenoAge acceleration in MR.
+Headline findings: gradient-boosted Cox on routine blood markers beats PhenoAge (C 0.873 vs 0.858); BP adds little to mortality prediction; a 39-marker panel adds a small gain that transfers across laboratories in ranking but not in calibration (ALT, bicarbonate assay shifts), which an outcome-free marker translation (`bioage.harmonize`) restores; pulse pressure is not causally linked to PhenoAge acceleration in MR.
 
 All data are public (CDC NHANES, GWAS Catalog, figshare, 1000 Genomes) and are downloaded by the scripts; none are stored in this repository.
 
@@ -34,6 +35,7 @@ export PYTHONPATH=src
 .venv/bin/python scripts/full_panel.py       # pre-registered: 39-marker panel, leave-one-era-out (~40 min)
 .venv/bin/python scripts/mr_pulse_pressure.py # pre-registered: Mendelian randomization (needs data/raw/mr, see below)
 .venv/bin/python scripts/nhanes3_external.py # pre-registered: external validation of the full panel in NHANES III
+.venv/bin/python scripts/recalibration.py     # pre-registered: outcome-free recalibration of a new lab's markers
 ```
 
 Mendelian randomization inputs go in `data/raw/mr/`: Evangelou 2018 PP and SBP summary statistics (GWAS Catalog

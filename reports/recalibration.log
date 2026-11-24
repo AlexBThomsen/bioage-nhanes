@@ -1,0 +1,20 @@
+unmapped                             C=0.8672 pred=0.179 obs=0.147 ICI=0.0335
+stratified quantile map (primary)    C=0.8680 pred=0.142 obs=0.147 ICI=0.0116
+unstratified quantile map            C=0.8682 pred=0.144 obs=0.147 ICI=0.0104
+median-ratio scaling                 C=0.8678 pred=0.150 obs=0.147 ICI=0.0118
+stratified map, all 35 markers       C=0.8682 pred=0.134 obs=0.147 ICI=0.0132
+{
+ "primary_minus_M2": [
+  0.004310188608926624,
+  0.00231801326412156,
+  0.006217207943807667
+ ],
+ "primary_minus_unmapped": [
+  0.000823811283423681,
+  -0.0005310916347960215,
+  0.002046184566119066
+ ],
+ "H13_supported": true,
+ "H14_supported": true
+}
+M2: C=0.8637 pred=0.141 ICI=0.0101
