@@ -1,0 +1,54 @@
+{'train': (17593, 4603), 'val': (5276, 935), 'test': (5645, 731), 'external': (9952, 334)}
+-> AgeOnly [-]
+   val C 0.840 | test C 0.838 [0.826-0.854] | IBS 0.0452 | accel HR/5y nan | ext C 0.825
+-> PhenoAge [A]
+   val C 0.862 | test C 0.858 [0.845-0.871] | IBS 0.0450 | accel HR/5y 1.25 | ext C 0.860
+-> Cox [A]
+   val C 0.860 | test C 0.859 [0.846-0.873] | IBS 0.0415 | accel HR/5y 1.86 | ext C 0.863
+-> Coxnet [A]
+   val C 0.861 | test C 0.859 [0.846-0.873] | IBS 0.0421 | accel HR/5y 2.05 | ext C 0.863
+-> RSF [A]
+   val C 0.866 | test C 0.860 [0.847-0.873] | IBS 0.0420 | accel HR/5y 1.73 | ext C 0.859
+-> XGBoost [A]
+   val C 0.869 | test C 0.863 [0.851-0.876] | IBS 0.0405 | accel HR/5y 1.58 | ext C 0.871
+-> DeepSurv [A]
+   val C 0.870 | test C 0.865 [0.853-0.878] | IBS 0.0408 | accel HR/5y 1.61 | ext C 0.871
+-> Cox [B]
+   val C 0.861 | test C 0.860 [0.847-0.873] | IBS 0.0417 | accel HR/5y 1.82 | ext C 0.863
+-> Coxnet [B]
+   val C 0.862 | test C 0.859 [0.846-0.873] | IBS 0.0421 | accel HR/5y 1.94 | ext C 0.863
+-> RSF [B]
+   val C 0.863 | test C 0.858 [0.846-0.871] | IBS 0.0425 | accel HR/5y 1.73 | ext C 0.856
+-> XGBoost [B]
+   val C 0.869 | test C 0.865 [0.852-0.877] | IBS 0.0406 | accel HR/5y 1.61 | ext C 0.871
+-> DeepSurv [B]
+   val C 0.870 | test C 0.867 [0.854-0.880] | IBS 0.0407 | accel HR/5y 1.62 | ext C 0.872
+-> Cox [C]
+   val C 0.869 | test C 0.865 [0.854-0.878] | IBS 0.0413 | accel HR/5y 1.70 | ext C 0.874
+-> Coxnet [C]
+   val C 0.869 | test C 0.865 [0.854-0.878] | IBS 0.0414 | accel HR/5y 1.80 | ext C 0.873
+-> RSF [C]
+   val C 0.867 | test C 0.861 [0.850-0.874] | IBS 0.0425 | accel HR/5y 1.80 | ext C 0.859
+-> XGBoost [C]
+   val C 0.876 | test C 0.873 [0.863-0.885] | IBS 0.0397 | accel HR/5y 1.54 | ext C 0.879
+-> DeepSurv [C]
+   val C 0.876 | test C 0.872 [0.861-0.884] | IBS 0.0406 | accel HR/5y 1.59 | ext C 0.877
+
+    model features  val_c  harrell_c  uno_c  auc_5y  auc_9y   ibs  accel_hr_per5y  ext_harrell_c
+ AgeOnly        -  0.840      0.838  0.839   0.848   0.859 0.045             NaN          0.825
+PhenoAge        A  0.862      0.858  0.858   0.876   0.877 0.045           1.254          0.860
+     Cox        A  0.860      0.859  0.860   0.875   0.878 0.042           1.862          0.863
+  Coxnet        A  0.861      0.859  0.859   0.875   0.878 0.042           2.049          0.863
+     RSF        A  0.866      0.860  0.859   0.887   0.879 0.042           1.733          0.859
+ XGBoost        A  0.869      0.863  0.863   0.885   0.882 0.041           1.583          0.871
+DeepSurv        A  0.870      0.865  0.865   0.885   0.884 0.041           1.608          0.871
+     Cox        B  0.861      0.860  0.860   0.876   0.879 0.042           1.819          0.863
+  Coxnet        B  0.862      0.859  0.859   0.875   0.878 0.042           1.936          0.863
+     RSF        B  0.863      0.858  0.858   0.885   0.878 0.042           1.730          0.856
+ XGBoost        B  0.869      0.865  0.865   0.885   0.884 0.041           1.615          0.871
+DeepSurv        B  0.870      0.867  0.867   0.888   0.886 0.041           1.617          0.872
+     Cox        C  0.869      0.865  0.865   0.880   0.885 0.041           1.697          0.874
+  Coxnet        C  0.869      0.865  0.865   0.881   0.884 0.041           1.798          0.873
+     RSF        C  0.867      0.861  0.861   0.885   0.881 0.043           1.800          0.859
+ XGBoost        C  0.876      0.873  0.873   0.892   0.891 0.040           1.541          0.879
+DeepSurv        C  0.876      0.872  0.872   0.892   0.891 0.041           1.589          0.877

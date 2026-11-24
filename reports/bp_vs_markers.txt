@@ -1,0 +1,6 @@
+age only                     all-cause C 0.838 | stroke C 0.909
+age + BP (SBP, PP, meds)     all-cause C 0.838 | stroke C 0.914
+age + 9 blood markers        all-cause C 0.859 | stroke C 0.903
+age + markers + BP           all-cause C 0.860 | stroke C 0.907
+markers minus BP (all-cause): +0.021 [+0.017, +0.024]
+test stroke deaths: 45

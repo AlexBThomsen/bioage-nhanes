@@ -1,0 +1,11 @@
+Paired bootstrap of C-index difference on test (500 resamples):
+  XGBoost_C   - PhenoAge_A : +0.0150 [+0.0103, +0.0200]  significant
+  XGBoost_C   - Cox_C      : +0.0079 [+0.0045, +0.0114]  significant
+  XGBoost_C   - DeepSurv_C : +0.0014 [-0.0010, +0.0039]  not significant
+  XGBoost_B   - XGBoost_A  : +0.0017 [+0.0003, +0.0034]  significant
+  PhenoAge_A  - AgeOnly_-  : +0.0196 [+0.0129, +0.0262]  significant
+
+C-index within age bands (what the blood adds beyond age):
+  age 20-49 (n=2914, deaths=59): {'AgeOnly_-': np.float64(0.639), 'PhenoAge_A': np.float64(0.706), 'Cox_C': np.float64(0.715), 'XGBoost_C': np.float64(0.745), 'DeepSurv_C': np.float64(0.749)}
+  age 50-64 (n=1382, deaths=151): {'AgeOnly_-': np.float64(0.584), 'PhenoAge_A': np.float64(0.699), 'Cox_C': np.float64(0.729), 'XGBoost_C': np.float64(0.745), 'DeepSurv_C': np.float64(0.748)}
+  age 65-90 (n=1349, deaths=521): {'AgeOnly_-': np.float64(0.685), 'PhenoAge_A': np.float64(0.735), 'Cox_C': np.float64(0.746), 'XGBoost_C': np.float64(0.762), 'DeepSurv_C': np.float64(0.757)}

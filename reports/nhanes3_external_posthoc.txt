@@ -1,0 +1,9 @@
+POST-HOC (not pre-registered): drop the most-shifted markers from M3x one at a time
+observed 10y risk 0.147
+drop None: C=0.8672  mean pred=0.179
+drop ['lab_alt']: C=0.8676  mean pred=0.161
+drop ['lab_ldh']: C=0.8667  mean pred=0.175
+drop ['lab_bicarb']: C=0.8688  mean pred=0.166
+drop ['lab_sodium', 'lab_chloride', 'lab_osmo']: C=0.8650  mean pred=0.190
+drop ['lab_globulin', 'lab_protein']: C=0.8676  mean pred=0.177
+drop ['lab_alt', 'lab_ldh', 'lab_bicarb', 'lab_sodium', 'lab_chloride', 'lab_osmo', 'lab_globulin', 'lab_protein']: C=0.8675  mean pred=0.141

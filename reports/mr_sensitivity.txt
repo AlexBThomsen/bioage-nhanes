@@ -1,0 +1,6 @@
+window    1 Mb  PP->PhenoAgeAccel  SNPs 410  IVW +0.006 [-0.172, +0.185]  WM +0.069
+window    1 Mb  SBP->PhenoAgeAccel  SNPs 503  IVW +0.074 [-0.041, +0.188]  WM +0.095
+window    5 Mb  PP->PhenoAgeAccel  SNPs 222  IVW +0.079 [-0.124, +0.282]  WM +0.092
+window    5 Mb  SBP->PhenoAgeAccel  SNPs 239  IVW +0.084 [-0.058, +0.226]  WM +0.084
+window   10 Mb  PP->PhenoAgeAccel  SNPs 148  IVW +0.042 [-0.201, +0.284]  WM +0.096
+window   10 Mb  SBP->PhenoAgeAccel  SNPs 166  IVW +0.061 [-0.104, +0.227]  WM +0.083
